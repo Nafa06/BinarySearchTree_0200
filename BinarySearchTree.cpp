@@ -129,6 +129,10 @@ public:
         cout << ptr->info << " "; // Parent
     }
 
-
+    bool isEmpty()
+    {
+        // Check if the tree is empty
+        return ROOT == nullptr;
+    }
 };
 
