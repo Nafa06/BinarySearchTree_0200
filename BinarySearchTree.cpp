@@ -26,4 +26,7 @@ private:
         ROOT = nullptr; // initialize root to null
     }
 
+    void insert(){
+       
+    }
 };
