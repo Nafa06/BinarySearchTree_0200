@@ -18,7 +18,7 @@ public:
 
 class BinaryTree
 {
-private:
+public:
     Node *ROOT;
 
     BinaryTree()
@@ -26,7 +26,8 @@ private:
         ROOT = nullptr; // initialize root to null
     }
 
-    void insert(){
+    void insert()
+    {
         int x;
         cout << "Masukkan nilai: ";
         cin >> x;
@@ -43,5 +44,48 @@ private:
 
         // Step 4: Locate the node which will be the parent of the new node to be inserted
         Node *parent = nullptr;
+        Node *currentNode = nullptr;
+        search(x, parent, currentNode);
+
+        // Step 5: If parent is NULL (Tree is empty)
+        if (parent == nullptr)
+        {
+            // 5a: Mark new node as root
+            ROOT = newNode;
+            // 5b: Exit
+            return;
+        }
+        // Step 6: If the value in the data field of the new node is less than that of parent
+        if (x < parent->info)
+        {
+            // 6a: Make the left child of parent point to new node
+            parent->leftchild = newNode;
+            // 6b: Exit
+            return;
+        }
+        // Step 7: If the value in the data field of the new node is greater than that of parent
+        else if (x > parent->info)
+        {
+            // 7a: Make the right child of parent point to new node
+            parent->rightchild = newNode;
+            // 7b: Exit
+            return;
+        }
     }
+    void search(int element, Node *&parent, Node *&currentNode)
+    {
+        // This function searches the currentNode of the specified Node as well as the current Node of it's parent.
+        currentNode = ROOT;
+        parent = nullptr;
+        while ((currentNode != nullptr) && (currentNode->info != element))
+        {
+            parent = currentNode;
+            if (element < currentNode->info)
+                currentNode = currentNode->leftchild;
+            else
+                currentNode = currentNode->rightchild;
+        };
+    }
+
+
 };
