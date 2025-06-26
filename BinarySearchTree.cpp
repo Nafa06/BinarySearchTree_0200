@@ -18,5 +18,8 @@ public:
 
 class BinaryTree
 {
+private:
+    Node *ROOT;
 
+    
 };
